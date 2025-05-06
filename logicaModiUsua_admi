@@ -1,0 +1,31 @@
+<?php
+session_start();
+$link=mysql_connect("localhost","root","") or die("Erro en la Conexion");
+mysql_select_db("sg_modulo_vivienda",$link)or die("Error base de datos");
+
+
+   $cedula=$_POST["ced"];
+   $nombre=$_POST["nombre"];
+   $apellido=$_POST["apellido"];
+   $direccion=$_POST["direccion"];
+   $barrio=$_POST["barrio"];
+   $celular=$_POST["celular"];
+   $proyecto=$_POST["proyecto"];
+   $caja=$_POST["caja"];
+   $date=$_POST["date"];
+   $terri=$_POST["terri"];
+   $sisben=$_POST["sisben"];
+   $cata=$_POST["cata"];
+   $observacion=$_POST["observacion"];
+   $mad=$_POST["mad"];
+   $des=$_POST["des"];
+   $rie=$_POST["rie"];
+
+ $sql="UPDATE personas SET nombres='$nombre',apellidos='$apellido',dirreccion='$direccion',barrio='$barrio',celular='$celular',codigo='$proyecto',N_caja='$caja',fecha_ingreso='$date',Observaciones='$observacion',id_territorio='$terri',sisben='$sisben',ced_castatral='$cata',id_madre='$mad',id_des='$des',id_ries='$rie' WHERE cedula=$cedula;";
+
+mysql_query($sql,$link)or die("Error en sql");
+mysql_close($link);
+echo "<script language='javascript'>alert('Usuario ". $nombre."".$apellido."  Modificado.');window.location='menuAdmi.php'</script>";
+
+
+?>
